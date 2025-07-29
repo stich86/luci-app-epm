@@ -69,7 +69,7 @@ The following table shows modules on which the application has been tested:
                 <td class="modem-name">Quectel RM551E-GL</td>
                 <td>N/A</td>
                 <td class="status-ok">✓</td>
-                <td class="status-warning"><⚠️/td>
+                <td class="status-warning">⚠️</td>
                 <td class="status-error">❌</td>
                 <td class="status-warning">⚠️</td>
                 <td class="firmware">RM551EGL00AAR01A03M8G</td>
@@ -116,10 +116,13 @@ The following eSIMs were used as *Physical eSIM*:
 *List and management of all notifications on eSIM*
 
 ### Configuration
-![Configuration-AT](asset/epm-config-at.png)
-![Configuration-QMI](asset/epm-config-qmi.png)
-![Configuration-MBIM](asset/epm-config-mbim.png)
 *Configuration panel for lpac binary and reboot commands (you can mix them, are not restricted)*
+
+![Configuration-AT](asset/epm-config-at.png)
+*AT Mode*
+![Configuration-QMI](asset/epm-config-qmi.png)
+*QMI Mode*
+![Configuration-MBIM](asset/epm-config-mbim.png)
 
 ## 🚀 **Installation**
 
