@@ -69,7 +69,7 @@ The following table shows modules on which the application has been tested:
                 <td class="modem-name">Quectel RM551E-GL</td>
                 <td>N/A</td>
                 <td class="status-ok">✓</td>
-                <td class="status-warning"><⚠️/td>
+                <td class="status-warning">⚠️</td>
                 <td class="status-error">❌</td>
                 <td class="status-warning">⚠️</td>
                 <td class="firmware">RM551EGL00AAR01A03M8G</td>
