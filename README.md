@@ -20,6 +20,7 @@
 - Packages `lpac`, `uqmi`, `mbimcli` and `coreutils-timeout` installed
 - Cellular module with eSIM (physical or embedded) support
 - Internet connection (for profile download and delete)
+> **Note**: MBIM support needs at least LPAC 2.2.0 version
 
 ## 📋 **Tested Modules and eSIMs**
 
@@ -184,7 +185,6 @@ Contributions are **very welcome**!
 3. **🔧 Pull Requests**: Fixed something or added functionality? Submit a PR!
 4. **📝 Documentation**: Help improve docs and README
 5. **🧪 Testing**: Test on different modules/eSIMs and share results
-
 
 
 ## 🙏 **Acknowledgments**
