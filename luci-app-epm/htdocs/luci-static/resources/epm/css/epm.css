@@ -1,0 +1,559 @@
+/* eSIM Profile Manager - CSS Styles */
+
+/* ==========================================================================
+   VARIABLES & COMMON STYLES
+   ========================================================================== */
+
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --success-color: #28a745;
+    --success-hover: #218838;
+    --danger-color: #dc3545;
+    --danger-hover: #c82333;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --gray-color: #6c757d;
+    --gray-hover: #5a6268;
+    --purple-color: #f1057f;
+    --purple-hover: #dd0578;    
+    --light-bg: #f8f9fa;
+    --border-color: #dee2e6;
+    --border-radius: 6px;
+    --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --box-shadow-hover: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Common form styles */
+.cbi-value {
+    margin: 10px 0;
+    border: none !important;
+}
+
+.cbi-value-title {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+    vertical-align: top;
+    margin-top: 5px;
+}
+
+.cbi-value-field {
+    display: inline-block;
+    width: calc(100% - 170px);
+    min-width: 200px;
+}
+
+/* Form inputs */
+.cbi-input-text,
+.cbi-input-select,
+.cbi-input-file {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+}
+
+.cbi-input-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace;
+    resize: vertical;
+}
+
+/* Configuration specific inputs */
+.cbi-value-field .cbi-input-text,
+.cbi-value-field .cbi-input-select {
+    width: 200px;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.file-help {
+    font-size: 11px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.cbi-button {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin: 0 0.25em;
+    transition: all 0.2s ease;
+}
+
+.cbi-button:hover {
+    box-shadow: var(--box-shadow-hover);
+    border-color: #9ca3af;
+}
+
+.cbi-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Button variants */
+.cbi-button-save { background: #5bc0de; color: white; border-color: #46b8da; }
+.cbi-button-apply { background: var(--success-color); color: white; border-color: #4cae4c; }
+.cbi-button-reload { background: var(--light-bg); border-color: var(--gray-color); }
+.cbi-button-reset { background: var(--gray-color); color: white; border-color: var(--gray-hover); }
+
+/* Action buttons (universal) */
+.profile-action-btn,
+.notification-action-btn,
+.download-action-btn {
+    min-width: 70px !important;
+    height: 36px !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    border-radius: var(--border-radius) !important;
+    border: none !important;
+    cursor: pointer !important;
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: var(--box-shadow) !important;
+    transition: all 0.2s ease !important;
+    margin: 0 2px !important;
+}
+
+.profile-action-btn:hover,
+.notification-action-btn:hover,
+.download-action-btn:hover {
+    background-color: var(--primary-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--box-shadow-hover) !important;
+}
+
+.profile-action-btn:active,
+.notification-action-btn:active,
+.download-action-btn:active {
+    transform: translateY(0);
+    box-shadow: var(--box-shadow) !important;
+}
+
+/* Button color variants */
+.process-btn { background-color: var(--success-color) !important; }
+.process-btn:hover { background-color: var(--success-hover) !important; }
+.remove-btn { background-color: var(--danger-color) !important; }
+.remove-btn:hover { background-color: var(--danger-hover) !important; }
+.clear-btn { background-color: var(--purple-color) !important; }
+.clear-btn:hover { background-color: var(--purple-hover) !important; }
+.refresh-btn { background-color: var(--gray-color) !important; }
+.refresh-btn:hover { background-color: var(--gray-hover) !important; }
+
+/* Specific button sizing */
+.notification-action-btn {
+    height: 32px !important;
+    font-size: 12px !important;
+}
+
+.download-action-btn {
+    min-width: 120px !important;
+    height: 40px !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    margin: 0 8px !important;
+}
+
+.qr-clear-btn {
+    min-width: 80px !important;
+    height: 32px !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    background-color: var(--gray-color) !important;
+    color: white !important;
+}
+
+.qr-clear-btn:hover {
+    background-color: var(--gray-hover) !important;
+}
+
+/* ==========================================================================
+   TAB SYSTEM
+   ========================================================================== */
+
+.cbi-tabmenu {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1em;
+}
+
+.cbi-tabmenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cbi-tab {
+    display: inline-block;
+    margin-right: 0;
+}
+
+.cbi-tab a {
+    display: block;
+    padding: 0.5em 1em;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    text-decoration: none;
+    color: #666;
+    border-radius: 0.5em 0.5em 0 0;
+}
+
+.cbi-tab:hover a,
+.cbi-tab-active a {
+    background: #fff;
+    color: #000;
+}
+
+.cbi-tabcontainer {
+    border: none;
+    background: #fff;
+    min-height: 20em;
+}
+
+.cbi-tabcontent {
+    display: none;
+}
+
+.cbi-tabcontent-active {
+    display: block !important;
+}
+
+/* Tab content resets */
+.cbi-tabcontent .cbi-section,
+.cbi-tabcontent .cbi-section-node {
+    border: none !important;
+    margin: 0;
+    padding: 0;
+}
+
+.cbi-tabcontent h3 {
+    margin-top: 0;
+}
+
+.cbi-tabcontent fieldset {
+    border: none !important;
+}
+
+.cbi-tabcontent legend {
+    border: none !important;
+}
+
+.cbi-tabcontent hr {
+    display: none !important;
+}
+
+/* Hide ALL page actions by default in tab content */
+.cbi-page-actions {
+    display: none !important;
+}
+
+/* Show actions only in specific tabs */
+#config-tab .cbi-page-custom-actions,
+#download-tab .cbi-page-custom-actions {
+    display: block !important;
+}
+
+/* Action containers */
+.config-actions,
+.download-actions {
+    margin: 20px 0;
+    text-align: center;
+    padding: 15px;
+    background-color: var(--light-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.config-actions {
+    border-top: 1px solid var(--border-color);
+    border: none;
+}
+
+.bulk-actions-container,
+.cbi-page-custom-actions {
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding: 15px;
+    background-color: var(--light-bg);
+}
+
+.cbi-page-custom-actions {
+    text-align: right;
+}
+
+.bulk-actions-container h4,
+.cbi-page-custom-actions h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* ==========================================================================
+   CONFIGURATION SECTIONS
+   ========================================================================== */
+
+#at-section,
+#uqmi-section,
+#mbim-section {
+    transition: opacity 0.3s ease-in-out;
+}
+
+#at-section[style*="none"],
+#uqmi-section[style*="none"],
+#mbim-section[style*="none"] {
+    opacity: 0;
+}
+
+/* ==========================================================================
+   DOWNLOAD SECTION
+   ========================================================================== */
+
+#qr-preview-container {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+}
+
+#qr-decode-status div {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   PROFILES SECTION
+   ========================================================================== */
+
+.profile-status {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 80px;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+.profile-status-enabled {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.profile-status-disabled {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.profile-status-unknown {
+    background-color: var(--warning-color);
+    color: #212529;
+}
+
+/* Action dropdown */
+.action-dropdown {
+    position: relative;
+    display: inline-flex;
+}
+
+.primary-action {
+    border-radius: var(--border-radius) 0 0 var(--border-radius) !important;
+    border-right: 1px solid rgba(255,255,255,0.3) !important;
+}
+
+.dropdown-toggle {
+    min-width: 30px !important;
+    width: 30px !important;
+    padding: 8px 0 !important;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0 !important;
+    position: relative;
+    margin-left: 0 !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    text-align: center !important;
+}
+
+.dropdown-toggle:after {
+    content: '';
+    border-left: 1px solid rgba(255,255,255,0.3);
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 160px;
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: var(--light-bg);
+}
+
+.dropdown-item.danger {
+    color: var(--danger-color);
+}
+
+.dropdown-item.danger:hover {
+    background-color: #f5c6cb;
+    color: #721c24;
+}
+
+.dropdown-item i {
+    font-style: normal;
+    width: 18px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.icon-edit:before { content: '✏️'; }
+.icon-trash:before { content: '🗑️'; }
+
+/* ==========================================================================
+   NOTIFICATIONS SECTION
+   ========================================================================== */
+
+.operation-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.operation-install { background-color: var(--info-color); color: white; }
+.operation-enable { background-color: var(--success-color); color: white; }
+.operation-disable { background-color: var(--warning-color); color: #212529; }
+.operation-delete { background-color: var(--danger-color); color: white; }
+.operation-unknown { background-color: var(--gray-color); color: white; }
+
+/* ==========================================================================
+   TABLES
+   ========================================================================== */
+
+#profiles-table,
+#notifications-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#profiles-table th,
+#profiles-table td,
+#notifications-table th,
+#notifications-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+#profiles-table th,
+#notifications-table th {
+    background-color: var(--light-bg);
+    font-weight: bold;
+    color: #495057;
+    border-top: 1px solid var(--border-color);
+}
+
+#profiles-table tbody tr:hover,
+#notifications-table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    .cbi-value-field {
+        width: calc(100% - 160px);
+        min-width: 150px;
+    }
+    
+    .profile-status,
+    .profile-action-btn,
+    .notification-action-btn {
+        min-width: 60px;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .notification-action-btn {
+        min-width: 60px !important;
+        font-size: 11px !important;
+        padding: 4px 8px !important;
+    }
+    
+    .download-action-btn {
+        min-width: 100px !important;
+        margin: 5px !important;
+    }
+    
+    .dropdown-toggle {
+        min-width: 26px !important;
+        max-width: 26px !important;
+        width: 26px !important;
+        font-size: 9px !important;
+        padding: 6px 0 !important;
+    }
+}

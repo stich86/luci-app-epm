@@ -1,0 +1,110 @@
+<!-- /usr/lib/lua/luci/view/epm/download.htm -->
+
+<fieldset class="cbi-section">
+    <legend><%:QR Code Upload%></legend>
+    <div class="cbi-section-node">
+        <div class="cbi-value">
+            <label class="cbi-value-title"><%:QR Code Image%>:</label>
+            <div class="cbi-value-field">
+                <input type="file" id="qr-file" accept="image/*" onchange="handleQRFile(this)" class="cbi-input-file" />
+                <div class="file-help"><%:Upload a JPG or PNG image containing the QR code - it will be decoded automatically%></div>
+            </div>
+        </div>
+        
+        <div id="qr-preview-container" style="display: none; margin-top: 15px;">
+            <div class="cbi-value">
+                <label class="cbi-value-title"><%:Preview%>:</label>
+                <div class="cbi-value-field">
+                    <div style="display: inline-block; vertical-align: top;">
+                        <img id="qr-preview" style="max-width: 300px; max-height: 200px; border: 1px solid #ccc; border-radius: 4px; display: block;" />
+                      
+                        <div id="qr-decode-status" style="margin-top: 8px; min-height: 20px;">
+                            <div id="qr-decode-loading" style="display: none; color: #0099cc;">
+                                <i class="icon-spinner"></i> <%:Decoding QR code...%>
+                            </div>
+                            <div id="qr-decode-success" style="display: none; color: green;">
+                                <strong><%:QR Code decoded successfully!%></strong>
+                            </div>
+                            <div id="qr-decode-error" style="display: none; color: red;">
+                                <strong><%:Error%>:</strong> <span id="qr-decode-error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="qr-clear-btn" onclick="clearQRUpload()" style="margin-top: 10px;"><%:Clear%></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qr-activation-code-container" style="display: none; margin-top: 15px;">
+            <div class="cbi-value">
+                <label class="cbi-value-title"><%:QR Activation Code%>:</label>
+                <div class="cbi-value-field">
+                    <input type="text" id="qr-activation-code" class="cbi-input-text">
+                </div>
+            </div>
+        </div>
+</fieldset>
+
+<fieldset class="cbi-section">
+    <legend><%:Manual Download%></legend>
+    <div class="cbi-section-node">
+        <div class="cbi-value">
+            <label class="cbi-value-title"><%:SM-DP+ Server Address%>:</label>
+            <div class="cbi-value-field">
+                <input type="text" id="smdp-server-address" class="cbi-input-text" placeholder="<%:Enter SM-DP+ server address%>">
+            </div>
+        </div>
+
+        <div class="cbi-value">
+            <label class="cbi-value-title"><%:Activation Code%>:</label>
+            <div class="cbi-value-field">
+                <input type="text" id="activation-code" class="cbi-input-text" placeholder="<%:Enter Activation Code%>">
+            </div>
+        </div>
+
+        <div class="cbi-value">
+            <label class="cbi-value-title"><%:Confirmation Code%>:</label>
+            <div class="cbi-value-field">
+                <input type="text" id="confirmation-code" class="cbi-input-text" placeholder="<%:Optional Confirmation Code%>">
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<div id="download-status" style="margin-top: 20px;">
+    <div id="download-loading" style="display: none; text-align: center; padding: 20px;">
+        <img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align: middle;" />
+        <%:Downloading profile...%>
+    </div>
+    
+    <div id="download-success" style="display: none; color: green; padding: 10px; border: 1px solid #5cb85c; background: #dff0d8; border-radius: 4px;">
+        <strong><%:Success%>:</strong> <span id="download-success-message"></span>
+    </div>
+    
+    <div id="download-error" style="display: none; color: #d9534f; padding: 10px; border: 1px solid #d9534f; background: #f2dede; border-radius: 4px;">
+        <strong><%:Error%>:</strong> <span id="download-error-message"></span>
+    </div>
+</div>
+
+<!-- Output Logs Section - will be created dynamically by JavaScript -->
+<div id="output-logs-section" style="margin-top: 30px; display: none;">
+    <fieldset class="cbi-section">
+        <legend><%:Output Logs%></legend>
+        <div class="cbi-section-node">
+            <div id="output-logs-content" style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; padding: 10px; font-family: monospace; font-size: 11px; white-space: pre-wrap; word-break: break-all; max-height: 300px; overflow-y: auto; overflow-x: hidden; width: calc(100% - 22px); max-width: 100%;">
+                <!-- Logs will appear here -->
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<div class="cbi-page-custom-actions">
+    <input type="button" class="cbi-button notification-action-btn process-btn" value="<%:Download Profile%>" onclick="downloadProfile()" />
+    <input type="button" class="cbi-button notification-action-btn remove-btn" value="<%:Clear All%>" onclick="clearForm()" />
+    <input type="button" class="cbi-button notification-action-btn refresh-btn" value="Clear Logs" onclick="clearDownloadLogs()" />
+</div>
+
+<link rel="stylesheet" type="text/css" href="<%=resource%>/epm/css/epm.css" />
+<script type="text/javascript" src="<%=resource%>/epm/js/epm-download.js"></script>
+<script type="text/javascript" src="<%=resource%>/epm/js/jsQR.js"></script>

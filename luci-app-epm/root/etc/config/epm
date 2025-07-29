@@ -1,0 +1,17 @@
+
+config epm 'epm'
+	option apdu_backend 'at'
+	option reboot_method 'at'
+	option qmi_device '/dev/cdc-wdm0'
+	option at_device '/dev/ttyUSB3'
+	option qmi_sim_slot '1'
+	option mbim_proxy '0'
+	option mbim_device '/dev/cdc-wdm0'
+	option reboot_qmi_slot '1'
+	option reboot_custom_command 'echo "Custom reboot command here"'
+	option reboot_mbim_device '/dev/cdc-wdm1'
+	option reboot_at_command 'AT+CFUN=0;+CFUN=1'
+	option reboot_qmi_device '/dev/cdc-wdm0'
+	option reboot_at_device '/dev/ttyUSB3'
+	option json_output '0'
+

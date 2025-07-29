@@ -1,0 +1,59 @@
+<!-- /usr/lib/lua/luci/view/epm/info.htm -->
+
+<div id="esim-info-loading" style="text-align: center; padding: 20px;">
+    <img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align: middle;" />
+    <%:Loading eSIM information...%>
+</div>
+
+    <div id="esim-info-content" style="display: none;">
+        <fieldset class="cbi-section">
+            <legend><%:Basic Information%></legend>
+            <table class="cbi-section-table">
+                <tr>
+                    <td style="width: 150px; font-weight: bold;"><%:EID%>:</td>
+                    <td id="esim-eid">-</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;"><%:Profile Version%>:</td>
+                    <td id="esim-profile-version">-</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;"><%:SVN%>:</td>
+                    <td id="esim-svn">-</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;"><%:Firmware Version%>:</td>
+                    <td id="esim-firmware">-</td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <fieldset class="cbi-section">
+            <legend><%:Memory Information%></legend>
+            <table class="cbi-section-table">
+                <tr>
+                    <td style="width: 150px; font-weight: bold;"><%:Free Non-Volatile Memory%>:</td>
+                    <td id="esim-nv-memory">-</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;"><%:Free Volatile Memory%>:</td>
+                    <td id="esim-v-memory">-</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;"><%:Installed Applications%>:</td>
+                    <td id="esim-apps">-</td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+    <div id="esim-info-error" style="display: none; color: red; padding: 10px;">
+        <strong><%:Error%>:</strong> <span id="esim-error-message"></span>
+    </div>
+
+<div class="cbi-page-custom-actions">
+    <input type="button" class="cbi-button notification-action-btn refresh-btn" value="Refresh" onclick="loadESIMInfo()" />
+</div>
+
+<link rel="stylesheet" type="text/css" href="<%=resource%>/epm/css/epm.css" />
+<script type="text/javascript" src="<%=resource%>/epm/js/epm-info.js"></script>

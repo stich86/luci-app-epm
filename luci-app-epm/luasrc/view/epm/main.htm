@@ -1,0 +1,59 @@
+<!-- /usr/lib/lua/luci/view/epm/main.htm -->
+
+<!-- eSIM Connectivity Banner -->
+<div id="esim-connectivity-banner" style="margin-bottom: 20px;">
+    <div id="connectivity-checking" style="display: block; padding: 10px; border: 1px solid #ffc107; background: #fff3cd; border-radius: 4px; color: #856404;">
+        <i class="icon-spinner"></i> <strong><%:Checking internet connection...%></strong>
+    </div>
+
+    <div id="connectivity-online" style="display: none; padding: 10px; border: 1px solid #28a745; background: #d4edda; border-radius: 4px; color: #155724;">
+        <i class="icon-ok"></i> <strong><%:Internet connection available%></strong> - <%:You can manage eSIM profiles%>
+    </div>
+
+    <div id="connectivity-offline" style="display: none; padding: 10px; border: 1px solid #dc3545; background: #f8d7da; border-radius: 4px; color: #721c24;">
+        <i class="icon-remove"></i> <strong><%:No internet connection detected%></strong> - <%:An internet connection is required to download and manage eSIM profiles. Please check your WAN connection.%>
+        <br><br>
+        <button type="button" class="cbi-button cbi-button-apply" onclick="checkConnectivity()"><%:Check Again%></button>
+    </div>
+</div>
+
+<div class="cbi-map">
+    <h2 name="content"><%:eSIM Profile Manager%></h2>
+    <div class="cbi-map-descr"><%:Manage eSIM profiles using lpac%></div>
+   
+    <div class="cbi-tabmenu">
+        <ul>
+            <li class="cbi-tab"><a href="#" onclick="return showTab('info-tab', this)"><%:eSIM Info%></a></li>
+            <li class="cbi-tab"><a href="#" onclick="return showTab('profiles-tab', this)"><%:Profiles%></a></li>
+            <li class="cbi-tab"><a href="#" onclick="return showTab('download-tab', this)"><%:Download Profile%></a></li>
+            <li class="cbi-tab"><a href="#" onclick="return showTab('notifications-tab', this)"><%:Notifications%></a></li>
+            <li class="cbi-tab"><a href="#" onclick="return showTab('config-tab', this)"><%:Configuration%></a></li>
+        </ul>
+    </div>
+    
+    <div class="cbi-tabcontainer">
+        <div id="info-tab" class="cbi-tabcontent cbi-tabcontent-active">
+            <%+epm/info%>
+        </div>
+        
+        <div id="profiles-tab" class="cbi-tabcontent">
+            <%+epm/profiles%>
+        </div>
+        
+        <div id="download-tab" class="cbi-tabcontent">
+            <%+epm/download%>
+        </div>
+        
+        <div id="notifications-tab" class="cbi-tabcontent">
+            <%+epm/notifications%>
+        </div>
+        
+        <div id="config-tab" class="cbi-tabcontent">
+            <%+epm/config%>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="<%=resource%>/epm/css/epm.css" />
+<script type="text/javascript" src="<%=resource%>/epm/js/epm-main.js"></script>
+<script type="text/javascript" src="<%=resource%>/epm/js/epm-connectivity.js"></script>

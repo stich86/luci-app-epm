@@ -1,0 +1,174 @@
+<!-- /usr/lib/lua/luci/view/epm/config.htm -->
+
+<div id="config-loading" style="text-align: center; padding: 20px;">
+    <img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align: middle;" />
+    <%:Loading configuration...%>
+</div>
+
+<div id="config-content" style="display: none;">
+    <form id="config-form">
+        <fieldset class="cbi-section">
+            <legend><%:Global Settings%></legend>
+            <div class="cbi-section-node">
+                <div class="cbi-value">
+                    <label class="cbi-value-title"><%:APDU Backend%></label>
+                    <div class="cbi-value-field">
+                        <select id="apdu_backend" name="apdu_backend" class="cbi-input-select" onchange="onBackendChange()">
+                            <option value="at">AT</option>
+                            <option value="uqmi">QMI</option>
+                            <option value="mbim">MBIM</option>
+                        </select>
+                        <div class="file-help"><%:Select which APDU backend will be used for eSIM communication%></div>
+                    </div>
+                </div>
+                <div class="cbi-value">
+                    <label class="cbi-value-title"><%:Enable Output Logs%></label>
+                    <div class="cbi-value-field">
+                        <select id="json_output" name="json_output" class="cbi-input-select">
+                            <option value="0"><%:Disabled%></option>
+                            <option value="1"><%:Enabled%></option>
+                        </select>
+                        <div class="file-help"><%:Enable JSON Output on Download and Notifications Tabs%></div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="cbi-section">
+            <legend><%:Device Settings%></legend>
+            <div class="cbi-section-node">
+                <div class="cbi-value" id="at-device-setting">
+                    <label class="cbi-value-title"><%:AT Device%></label>
+                    <div class="cbi-value-field">
+                        <input type="text" id="at_device" name="at_device" class="cbi-input-text" placeholder="/dev/ttyUSB3" />
+                        <div class="file-help"><%:Serial port device used by AT APDU backend%></div>
+                    </div>
+                </div>
+
+                <div class="cbi-value" id="qmi-device-setting">
+                    <label class="cbi-value-title"><%:QMI Device%></label>
+                    <div class="cbi-value-field">
+                        <input type="text" id="qmi_device" name="qmi_device" class="cbi-input-text" placeholder="/dev/cdc-wdm0" />
+                        <div class="file-help"><%:QMI device used by QMI APDU backend%></div>
+                    </div>
+                </div>
+
+                <div class="cbi-value" id="qmi-sim-slot-setting">
+                    <label class="cbi-value-title"><%:QMI SIM Slot%></label>
+                    <div class="cbi-value-field">
+                        <select id="qmi_sim_slot" name="qmi_sim_slot" class="cbi-input-select">
+                            <option value="1"><%:Slot 1%></option>
+                            <option value="2"><%:Slot 2%></option>
+                        </select>
+                        <div class="file-help"><%:SIM slot number for QMI operations (1 or 2)%></div>
+                    </div>
+                </div>
+
+                <div class="cbi-value" id="mbim-device-setting">
+                    <label class="cbi-value-title"><%:MBIM Device%></label>
+                    <div class="cbi-value-field">
+                        <input type="text" id="mbim_device" name="mbim_device" class="cbi-input-text" placeholder="/dev/cdc-wdm0" />
+                        <div class="file-help"><%:MBIM device used by MBIM APDU backend%></div>
+                    </div>
+                </div>
+
+                <div class="cbi-value" id="mbim-proxy-setting">
+                    <label class="cbi-value-title"><%:Use MBIM Proxy%></label>
+                    <div class="cbi-value-field">
+                        <select id="mbim_proxy" name="mbim_proxy" class="cbi-input-select">
+                            <option value="0"><%:Disabled%></option>
+                            <option value="1"><%:Enabled%></option>
+                        </select>
+                        <div class="file-help"><%:Enable MBIM proxy for MBIM APDU backend%></div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="cbi-section">
+            <legend><%:Modem Reboot Settings%></legend>
+            <div class="cbi-section-node">
+                <div class="cbi-value">
+                    <label class="cbi-value-title"><%:Reboot Method%></label>
+                    <div class="cbi-value-field">
+                        <select id="reboot_method" name="reboot_method" class="cbi-input-select" onchange="onRebootMethodChange()">
+                            <option value="at"><%:AT Command%></option>
+                            <option value="qmi"><%:QMI Commands%></option>
+                            <option value="mbim"><%:MBIM Command%></option>
+                            <option value="custom"><%:Custom Command%></option>
+                        </select>
+                        <div class="file-help"><%:Choose how to restart the modem when eSIM profiles are enabled%></div>
+                    </div>
+                </div>
+
+                <div class="cbi-value" id="at-reboot-setting">
+                    <label class="cbi-value-title"><%:AT Reset Command%></label>
+                    <div class="cbi-value-field">
+                        <input type="text" id="reboot_at_command" name="reboot_at_command" class="cbi-input-text" placeholder="AT+CFUN=1,1" />
+                        <div class="file-help"><%:AT command to reset the modem (default: AT+CFUN=1,1)%></div>
+                    </div>
+                </div>
+
+		        <div class="cbi-value" id="at-reboot-port-setting">
+                    <label class="cbi-value-title"><%:QMI Device for Reboot%></label>
+                    <div class="cbi-value-field">
+                        <input type="text" id="reboot_at_device" name="reboot_at_device" class="cbi-input-text" placeholder="/dev/ttyUSB3" />
+                        <div class="file-help"><%:Serial port device used for SIM power cycle%></div>
+                    </div>
+                </div>
+
+                <div class="cbi-value" id="qmi-reboot-setting">
+                    <label class="cbi-value-title"><%:QMI Device for Reboot%></label>
+                    <div class="cbi-value-field">
+                        <input type="text" id="reboot_qmi_device" name="reboot_qmi_device" class="cbi-input-text" placeholder="/dev/cdc-wdm0" />
+                        <div class="file-help"><%:QMI device to use for SIM power cycle%></div>
+                    </div>
+                </div>
+
+                <div class="cbi-value" id="qmi-reboot-slot-setting">
+                    <label class="cbi-value-title"><%:QMI SIM Slot for Reboot%></label>
+                    <div class="cbi-value-field">
+                        <select id="reboot_qmi_slot" name="reboot_qmi_slot" class="cbi-input-select">
+                            <option value="1"><%:Slot 1%></option>
+                            <option value="2"><%:Slot 2%></option>
+                        </select>
+                        <div class="file-help"><%:SIM slot number for QMI reboot operations%></div>
+                    </div>
+                </div>
+
+                <div class="cbi-value" id="mbim-reboot-setting">
+                    <label class="cbi-value-title"><%:MBIM Device for Reboot%></label>
+                    <div class="cbi-value-field">
+                        <input type="text" id="reboot_mbim_device" name="reboot_mbim_device" class="cbi-input-text" placeholder="/dev/cdc-wdm0" />
+                        <div class="file-help"><%:MBIM device to use for UICC reset%></div>
+                    </div>
+                </div>
+
+                <div class="cbi-value" id="custom-reboot-setting">
+                    <label class="cbi-value-title"><%:Custom Command%></label>
+                    <div class="cbi-value-field">
+                        <input type="text" id="reboot_custom_command" name="reboot_custom_command" class="cbi-input-text" placeholder="echo 'Custom reboot command here'" />
+                        <div class="file-help"><%:Enter your custom shell command to reboot the modem%></div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="cbi-page-custom-actions">
+            <input type="button" class="cbi-button cbi-button-apply" value="<%:Save & Apply%>" onclick="saveConfig()" />
+            <input type="button" class="cbi-button cbi-button-save" value="<%:Save%>" onclick="saveConfig()" />
+            <input type="button" class="cbi-button cbi-button-reset" value="<%:Reset%>" onclick="loadConfig()" />
+        </div>
+    </form>
+</div>
+
+<div id="config-error" style="display: none; color: red; padding: 10px;">
+    <strong><%:Error%>:</strong> <span id="config-error-message"></span>
+</div>
+
+<div id="config-success" style="display: none; color: green; padding: 10px;">
+    <strong><%:Success%>:</strong> <span id="config-success-message"></span>
+</div>
+
+<link rel="stylesheet" type="text/css" href="<%=resource%>/epm/css/epm.css" />
+<script type="text/javascript" src="<%=resource%>/epm/js/epm-config.js"></script>

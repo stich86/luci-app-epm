@@ -1,0 +1,68 @@
+<!-- /usr/lib/lua/luci/view/epm/notifications.htm -->
+
+<div id="notifications-loading" style="text-align: center; padding: 20px;">
+    <img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align: middle;" />
+    <%:Loading notifications...%>
+</div>
+
+<div id="notifications-content" style="display: none;">
+    <fieldset class="cbi-section">
+        <legend><%:Pending Notifications%></legend>
+        <div class="cbi-section-node">
+            <div class="table-responsive">
+                <table class="cbi-section-table" id="notifications-table">
+                    <thead>
+                        <tr class="cbi-section-table-titles">
+                            <th class="cbi-section-table-cell"><%:Sequence%></th>
+                            <th class="cbi-section-table-cell"><%:ICCID%></th>
+                            <th class="cbi-section-table-cell"><%:Provider%></th>
+                            <th class="cbi-section-table-cell"><%:Operation%></th>
+                            <th class="cbi-section-table-cell" style="text-align: center; min-width: 160px;"><%:Actions%></th>
+                        </tr>
+                    </thead>
+                    <tbody id="notifications-tbody">
+                        <!-- Notifications will appear here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="no-notifications" style="display: none; text-align: center; padding: 20px; color: #666;">
+                <%:No pending notifications%>
+            </div>
+        </div>
+
+    </fieldset>
+</div>
+
+<div id="notification-status" style="margin-top: 20px;">
+    <div id="notifications-success" style="display: none; color: green; padding: 10px; border: 1px solid #5cb85c; background: #dff0d8; border-radius: 4px;">
+        <strong><%:Status%>:</strong> <span id="notifications-success-message"></span>
+    </div>
+    
+    <div id="notifications-error" style="display: none; color: #d9534f; padding: 10px; border: 1px solid #d9534f; background: #f2dede; border-radius: 4px;">
+        <strong><%:Error%>:</strong> <span id="notifications-error-message"></span>
+    </div>
+</div>
+
+<!-- Output Logs Section - will be created dynamically by JavaScript -->
+<div id="notifications-logs-section" style="margin-top: 30px; display: none;">
+    <fieldset class="cbi-section">
+        <legend><%:Output Logs%></legend>
+        <div class="cbi-section-node">
+            <div id="notifications-logs-content" style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; padding: 10px; font-family: monospace; font-size: 11px; white-space: pre-wrap; word-break: break-all; max-height: 300px; overflow-y: auto; overflow-x: hidden; width: calc(100% - 22px); max-width: 100%;">
+                <!-- Logs will appear here -->
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<div class="cbi-page-custom-actions">
+        <input type="button" class="cbi-button notification-action-btn process-btn" value="Process All" onclick="processAllNotifications()" />
+        <input type="button" class="cbi-button notification-action-btn process-btn" value="Process and Remove All" onclick="processAllNotificationsAndRemove()" />
+        <input type="button" class="cbi-button notification-action-btn remove-btn" value="Remove All" onclick="removeAllNotifications()" />
+        <input type="button" class="cbi-button notification-action-btn refresh-btn" value="Clear Logs" onclick="clearNotificationLogs()" />
+        <input type="button" class="cbi-button notification-action-btn refresh-btn" value="Refresh" onclick="loadNotifications()" />
+</div>
+
+<link rel="stylesheet" type="text/css" href="<%=resource%>/epm/css/epm.css" />
+<script type="text/javascript" src="<%=resource%>/epm/js/epm-notifications.js"></script>

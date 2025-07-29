@@ -1,0 +1,54 @@
+<!-- /usr/lib/lua/luci/view/epm/profiles.htm -->
+   
+<div id="profiles-loading" style="text-align: center; padding: 20px;">
+    <img src="<%=resource%>/icons/loading.gif" alt="Loading" style="vertical-align: middle;" />
+    Loading profiles...
+</div>
+
+<div id="profiles-content" style="display: none;">
+    <fieldset class="cbi-section">
+        <legend>Installed Profiles</legend>
+        <div class="cbi-section-node">
+            <div class="table-responsive">
+                <table class="cbi-section-table" id="profiles-table">
+                    <thead>
+                        <tr class="cbi-section-table-titles">
+                            <th class="cbi-section-table-cell">Profile Name</th>
+                            <th class="cbi-section-table-cell">ICCID</th>
+                            <th class="cbi-section-table-cell">Provider</th>
+                            <th class="cbi-section-table-cell" style="text-align: center;">Status</th>
+                            <th class="cbi-section-table-cell" style="text-align: center; min-width: 160px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="profiles-tbody">
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="no-profiles" style="display: none; text-align: center; padding: 20px; color: #666;">
+                No profiles installed
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<div id="profiles-error" style="display: none; color: red; padding: 10px;">
+    <strong>Error:</strong> <span id="profiles-error-message"></span>
+</div>
+
+<div id="profile-notifications-status" style="margin-top: 20px;">
+    <div id="profile-notifications-success" style="display: none; color: green; padding: 10px; border: 1px solid #5cb85c; background: #dff0d8; border-radius: 4px;">
+        <strong><%:Status%>:</strong> <span id="profile-notifications-success-message"></span>
+    </div>
+    
+    <div id="profile-notifications-error" style="display: none; color: #d9534f; padding: 10px; border: 1px solid #d9534f; background: #f2dede; border-radius: 4px;">
+        <strong><%:Error%>:</strong> <span id="profile-notifications-error-message"></span>
+    </div>
+</div>
+
+<div class="cbi-page-custom-actions">
+    <input type="button" class="cbi-button notification-action-btn refresh-btn" value="Refresh" onclick="loadProfiles()" />
+</div>
+
+<link rel="stylesheet" type="text/css" href="<%=resource%>/epm/css/epm.css" />
+<script type="text/javascript" src="<%=resource%>/epm/js/epm-profiles.js"></script>

@@ -1,0 +1,16 @@
+{
+	"admin/modem/epm": {
+		"title": "eSIM Profile Manager",
+		"order": 60,
+		"action": {
+			"type": "cbi",
+			"path": "epm",
+			"post": {
+				"cbi.submit": true
+			}
+		},
+		"depends": {
+			"acl": [ "luci-app-epm" ]
+		}
+	}
+}
