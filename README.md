@@ -27,67 +27,67 @@ The following table shows modules on which the application has been tested:
 
 # Modem Compatibility Table
 
-        <table>
-            <thead>
-                <tr>
-                    <th rowspan="2">Modem Tested</th>
-                    <th colspan="2">e-SIM</th>
-                    <th colspan="3">APDU backend</th>
-                    <th rowspan="2">Firmware<br>ATI Output</th>
-                    <th rowspan="2">Reboot Method</th>
-                </tr>
-                <tr>
-                    <th>Internal</th>
-                    <th>External</th>
-                    <th>AT</th>
-                    <th>MBIM</th>
-                    <th>QMI</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="modem-name">Foxconn T99W175 (MV31-W)</td>
-                    <td class="status-ok">✓</td>
-                    <td class="status-ok">✓</td>
-                    <td class="status-error">❌</td>
-                    <td class="status-ok">✓</td>
-                    <td class="status-error">❌</td>
-                    <td class="firmware">F0.1.0.0.9.GC.004</td>
-                    <td>AT and MBIM</td>
-                </tr>
-                <tr>
-                    <td class="modem-name">Quectel RM502Q-GL</td>
-                    <td>N/A</td>
-                    <td class="status-ok">✓</td>
-                    <td class="status-ok">✓</td>
-                    <td class="status-ok">✓</td>
-                    <td class="status-ok">✓</td>
-                    <td class="firmware">RM502QGLAAR11A02M4G</td>
-                    <td>AT, QMI and MBIM</td>
-                </tr>
-                <tr>
-                    <td class="modem-name">Quectel RM551E-GL</td>
-                    <td>N/A</td>
-                    <td class="status-ok">✓</td>
-                    <td class="status-warning"><⚠️/td>
-                    <td class="status-error">❌</td>
-                    <td class="status-warning">⚠️</td>
-                    <td class="firmware">RM551EGL00AAR01A03M8G</td>
-                    <td>AT and QMI</td>
-                </tr>
-            </tbody>
-        </table>
+<table>
+    <thead>
+        <tr>
+            <th rowspan="2">Modem Tested</th>
+            <th colspan="2">e-SIM</th>
+            <th colspan="3">APDU backend</th>
+            <th rowspan="2">Firmware<br>ATI Output</th>
+            <th rowspan="2">Reboot Method</th>
+        </tr>
+            <tr>
+                <th>Internal</th>
+                <th>External</th>
+                <th>AT</th>
+                <th>MBIM</th>
+                <th>QMI</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td class="modem-name">Foxconn T99W175 (MV31-W)</td>
+                <td class="status-ok">✓</td>
+                <td class="status-ok">✓</td>
+                <td class="status-error">❌</td>
+                <td class="status-ok">✓</td>
+                <td class="status-error">❌</td>
+                <td class="firmware">F0.1.0.0.9.GC.004</td>
+                <td>AT and MBIM</td>
+            </tr>
+            <tr>
+                <td class="modem-name">Quectel RM502Q-GL</td>
+                <td>N/A</td>
+                <td class="status-ok">✓</td>
+                <td class="status-ok">✓</td>
+                <td class="status-ok">✓</td>
+                <td class="status-ok">✓</td>
+                <td class="firmware">RM502QGLAAR11A02M4G</td>
+                <td>AT, QMI and MBIM</td>
+            </tr>
+            <tr>
+                <td class="modem-name">Quectel RM551E-GL</td>
+                <td>N/A</td>
+                <td class="status-ok">✓</td>
+                <td class="status-warning"><⚠️/td>
+                <td class="status-error">❌</td>
+                <td class="status-warning">⚠️</td>
+                <td class="firmware">RM551EGL00AAR01A03M8G</td>
+                <td>AT and QMI</td>
+            </tr>
+        </tbody>
+</table>
         
-        <div class="legend">
-            <h2>Legend</h2>
-            <ul>
-                <li><span class="status-ok">✓</span> = Supported/Working</li>
-                <li><span class="status-error">❌</span> = Not supported/Error</li>
-                <li><span class="status-warning">⚠️</span> = Warning/Limited support</li>
-                <li><span class="status-unknown">?</span> = Unknown/To be tested</li>
-                <li>N/A = Not applicable</li>
-            </ul>
-        </div>
+<div class="legend">
+    <h2>Legend</h2>
+        <ul>
+            <li><span class="status-ok">✓</span> = Supported/Working</li>
+            <li><span class="status-error">❌</span> = Not supported/Error</li>
+            <li><span class="status-warning">⚠️</span> = Warning/Limited support</li>
+            <li><span class="status-unknown">?</span> = Unknown/To be tested</li>
+            <li>N/A = Not applicable</li>
+        </ul>
+</div>
 
 Quectel **RM551E-GL** is still in ES stage, and its firmware has some problems during eSIM operation.
 The following eSIMs were used as *Physical eSIM*:
@@ -132,13 +132,17 @@ You can download latest ipk from Release Page and install using the command:
 
 Add next line to `feeds.conf.default` in OpenWrt SDK/Buildroot:
 
-`src-git epm-manager https://github.com/stich86/epm-manager.git`
+`src-git epm https://github.com/stich86/luci-app-epm.git`
 
 Update feeds and compile the package:
 
-`./scripts/feeds update -a; ./scripts/feeds install -a
-make -j$((`nproc` + 1)) package/feeds/luci-app-epm/compile`
+```./scripts/feeds update -a; ./scripts/feeds install -a
+make -j$((`nproc` + 1)) package/feeds/epm/luci-app-epm/compile
+```
 
+The compiled package will be at:
+
+`SDKROOT/bin/packages/aarch64_cortex-a53/epm/luci-app-epm_1.0.0-r1_all.ipk`
 
 ### Project structure
 
@@ -147,19 +151,19 @@ make -j$((`nproc` + 1)) package/feeds/luci-app-epm/compile`
 .
 ├── htdocs
 │   └── luci-static
-│       └── resources		# CSS, JS
+│       └── resources		// CSS, JS
 ├── luasrc
-│   ├── controller		    # LuCI LUA controller
+│   ├── controller		// LuCI LUA controller
 │   ├── model
-│   │   └── cbi         	# CBI model
+│   │   └── cbi         	// CBI model
 │   └── view
-│       └── epm 		    # HTML templates
+│       └── epm 		// HTML templates
 └── root
     ├── etc
-    │   └── config 		    # Configuration file
+    │   └── config 		// Configuration file
     └── usr
         └── share
-            └── menu.d  	# Menu definition
+            └── menu.d  	// Menu definition
 
 ```
 
