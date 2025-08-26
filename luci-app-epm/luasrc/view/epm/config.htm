@@ -1,7 +1,7 @@
 <!-- /usr/lib/lua/luci/view/epm/config.htm -->
 
 <div id="config-loading" style="text-align: center; padding: 20px;">
-    <img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align: middle;" />
+    <img src="<%=resource%>/epm/icons/loading.gif" alt="<%:Loading%>" style="vertical-align: middle;" />
     <%:Loading configuration...%>
 </div>
 
@@ -110,7 +110,7 @@
                 </div>
 
 		        <div class="cbi-value" id="at-reboot-port-setting">
-                    <label class="cbi-value-title"><%:QMI Device for Reboot%></label>
+                    <label class="cbi-value-title"><%:AT Device for Reboot%></label>
                     <div class="cbi-value-field">
                         <input type="text" id="reboot_at_device" name="reboot_at_device" class="cbi-input-text" placeholder="/dev/ttyUSB3" />
                         <div class="file-help"><%:Serial port device used for SIM power cycle%></div>

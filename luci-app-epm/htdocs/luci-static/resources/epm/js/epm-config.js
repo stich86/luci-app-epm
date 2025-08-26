@@ -133,6 +133,7 @@ function onRebootMethodChange() {
     
     // Hide all reboot settings
     document.getElementById('at-reboot-setting').style.display = 'none';
+    document.getElementById('at-reboot-port-setting').style.display = 'none';
     document.getElementById('qmi-reboot-setting').style.display = 'none';
     document.getElementById('qmi-reboot-slot-setting').style.display = 'none';
     document.getElementById('mbim-reboot-setting').style.display = 'none';
@@ -141,6 +142,7 @@ function onRebootMethodChange() {
     // Show only relevant settings
     if (method === 'at') {
         document.getElementById('at-reboot-setting').style.display = 'flex';
+        document.getElementById('at-reboot-port-setting').style.display = 'flex'; 
     } else if (method === 'qmi') {
         document.getElementById('qmi-reboot-setting').style.display = 'flex';
         document.getElementById('qmi-reboot-slot-setting').style.display = 'flex';
